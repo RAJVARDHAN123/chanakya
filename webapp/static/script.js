@@ -1,9 +1,8 @@
 var DEBUG = false;
+var enrolment_key = "VK9F9C";
 
-if (DEBUG) {
-    var enrolment_key = window.location.href.split('k/').slice(-1);
-} else {
-    var enrolment_key = "C4RRNU";
+if (!DEBUG) {
+    enrolment_key = window.location.href.split('k/').slice(-1);
 }
 
 var slide_up_time = 600;
@@ -12,7 +11,7 @@ var questions = [];
 var answers = {};
 var dirty_answers = [];
 var current_question = 0;
-var base_url="http://35ec7046.ngrok.io";
+var base_url="/api/";
 var qDisplayed=false;
 
 function appending(error) {
@@ -40,20 +39,18 @@ function dQuestions() {
 }
 
 // For getting lat and long
-var positions;
+var positions = {"latitude": -1, "longitude": -1};
 if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition(
         (positions) => {
             positions = positions.coords;
         },
         (error) => {
-            positions = {"latitude": -1, "longitude": -1};
             appending('Geolocation not supported!');
         }
     );
 }
 else{
-    positions = {"latitude": -1, "longitude": -1};
     appending('Geolocation not supported!');
 }
 
@@ -454,6 +451,7 @@ function submitTest() {
         data: JSON.stringify(answers),
         contentType: 'application/json; charset=utf-8', 
         dataType: 'json',
+        processData: false,
         success: function(data, resp) {
             $('#question_answer_page').slideUp(slide_up_time);
             $("#end_page").slideDown(slide_down_time);
