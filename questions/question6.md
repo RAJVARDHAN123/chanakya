@@ -43,7 +43,8 @@ Solve for the value of x and y:
 ```
 
 ## Common Text
-y = x + 8  
+y = x + 8
+
 y = 3x + 10
 
 ### Hindi
