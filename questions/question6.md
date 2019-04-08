@@ -69,7 +69,7 @@ Solve for the value of x and y:
 }
 ```
 ## Common Text
-y = 3x + 4
+y = 3x + 4  
 y = x + 8
 
 ### Hindi
