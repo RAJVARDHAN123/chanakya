@@ -2,6 +2,7 @@
 
 const Path = require('path');
 const Hoek = require('hoek');
+
 const Manifest = require('./server/manifest');
 const PluginConfig = require('./lib/plugins/schwifty').plugins.options;
 
